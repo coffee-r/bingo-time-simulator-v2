@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "bingo-time-simulator",
+  "name": "bingo-time-simulator-v2",
   "main": "src/server/index.tsx",
   "compatibility_date": "2026-09-01",
   // ビルド済みのクライアント（public/static/*）は静的アセットとして配信し、
