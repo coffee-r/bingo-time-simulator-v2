@@ -19,14 +19,19 @@ export const fmtRange = (lo: number, hi: number) => {
   return a === b ? `約${a}` : `${a} 〜 ${b}`
 }
 
-/** 秒 → 「12:34」（経過時間） */
+/** 秒 → 「19分40秒」「45秒」 */
+export const fmtDur = (sec: number) => {
+  const s = Math.round(sec)
+  const m = Math.floor(s / 60)
+  const r = s % 60
+  if (m === 0) return `${r}秒`
+  return r ? `${m}分${r}秒` : `${m}分`
+}
+
+/** 秒 → 「19:40」（進行表の経過時間。1時間を超えても分で数える: 「75:20」） */
 export const fmtElapsed = (sec: number) => {
   const s = Math.round(sec)
-  const h = Math.floor(s / 3600)
-  const m = Math.floor((s % 3600) / 60)
-  const r = s % 60
-  const mm = String(m).padStart(h ? 2 : 1, '0')
-  return `${h ? `${h}:` : ''}${mm}:${String(r).padStart(2, '0')}`
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
 export const fmtPct = (r: number) => {

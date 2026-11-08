@@ -5,7 +5,7 @@ import { NUM_FIELDS, type NumKey, type Params, TRIALS, clampField, parseParams, 
 import { randomSeed } from '../core/rng'
 import type { SampleParty } from '../core/sample'
 import type { SimResult } from '../core/simulate'
-import { fmtElapsed, fmtNum, fmtRange } from './format'
+import { fmtDur, fmtElapsed, fmtNum, fmtRange } from './format'
 import { type RunHandle, runParallel, runSample } from './runner'
 
 /** 数値入力。入力途中の空欄は許し、数字が入った時点で範囲内に丸めて反映する */
@@ -83,7 +83,7 @@ const Timeline = (props: { sample: SampleParty; onReroll: () => void }) => {
       <summary>1回分の進行例を見る</summary>
       <div class="block-head">
         <p class="fine">
-          {sample.events.length}球で終了、{fmtElapsed(sample.totalSec)}かかった回です。
+          {sample.events.length}球で終了、{fmtDur(sample.totalSec)}かかった回です。
           {first && `最初のビンゴは${first.draw}球目。`}
         </p>
         <button type="button" class="text-btn" onClick={props.onReroll}>
@@ -94,7 +94,7 @@ const Timeline = (props: { sample: SampleParty; onReroll: () => void }) => {
         <table class="timeline">
           <thead>
             <tr>
-              <th scope="col">経過</th>
+              <th scope="col">経過（分:秒）</th>
               <th scope="col">球</th>
               <th scope="col">番号</th>
               <th scope="col">リーチ</th>
