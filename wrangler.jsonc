@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bingo-time-simulator",
+  "main": "src/server/index.tsx",
+  "compatibility_date": "2026-09-01",
+  // ビルド済みのクライアント（public/static/*）は静的アセットとして配信し、
+  // 一致しないパス（/ や /privacy）は Hono が SSR する
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true }
+}
